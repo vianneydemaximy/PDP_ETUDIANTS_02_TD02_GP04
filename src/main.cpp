@@ -11,7 +11,7 @@ const char* mqtt_server = "27cc61dbaffc4da08cd0081cabd8cf01.s2.eu.hivemq.cloud";
 int mqtt_port = 8883;
 const char* mqtt_user = "create_ece";
 const char* mqtt_pass = "create123A";
-const char* client_id = "TD02_GP04";
+const char* client_id = "TD01_GP04";
 const char* temp = "TD01_GP04/temp";
 const char* relhum = "TD01_GP04/relhum";
 
@@ -119,7 +119,7 @@ void setup() {
 
   // Send data to the broker with MQTT
   mqtt_client.connect(client_id, mqtt_user, mqtt_pass);
-  mqtt_client.publish(temp, String(temp_measure).c_str());
+  mqtt_client.publish(temp, String(temp_measure).c_str(), true);
   mqtt_client.publish(relhum, String(relative_humidity_measure).c_str(), true);
 
   Serial.println("Going to sleep for 5 seconds...");
