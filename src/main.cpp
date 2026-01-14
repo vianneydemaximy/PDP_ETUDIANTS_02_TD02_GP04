@@ -14,6 +14,7 @@ const char* mqtt_pass = "create123A";
 const char* client_id = "TD01_GP04";
 const char* temp = "TD01_GP04/temp";
 const char* relhum = "TD01_GP04/relhum";
+bool connected = false;
 
 
 
@@ -118,9 +119,13 @@ void setup() {
   }
 
   // Send data to the broker with MQTT
-  mqtt_client.connect(client_id, mqtt_user, mqtt_pass);
-  mqtt_client.publish(temp, String(temp_measure).c_str(), true);
-  mqtt_client.publish(relhum, String(relative_humidity_measure).c_str(), true);
+  connected = mqtt_client.connect(client_id, mqtt_user, mqtt_pass);
+  if (connected && temp_measure==temp_measure && relative_humidity_measure==relative_humidity_measure){
+    mqtt_client.publish(temp, String(temp_measure).c_str(), true);
+    mqtt_client.publish(relhum, String(relative_humidity_measure).c_str(), true);
+  }
+
+
 
   Serial.println("Going to sleep for 5 seconds...");
   delay(100);
