@@ -12,8 +12,8 @@ int mqtt_port = 8883;
 const char* mqtt_user = "create_ece";
 const char* mqtt_pass = "create123A";
 const char* client_id = "TD02_GP04";
-const char* temp = "TD02_GP04/temp";
-const char* relhum = "TD02_GP04/relhum";
+const char* temp = "TD01_GP04/temp";
+const char* relhum = "TD01_GP04/relhum";
 
 
 
